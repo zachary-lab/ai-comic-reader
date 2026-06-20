@@ -70,6 +70,7 @@ const viewerCanvas = document.getElementById('viewerCanvas');
 function getAppendixChapter(){return DATA.chapters.find(ch=>ch.id==='附錄') || DATA.chapters[DATA.chapters.length-1];}
 function setTab(tab){activeView=tab;document.getElementById('comicView').classList.toggle('active',tab==='comic');document.getElementById('novelView').classList.toggle('active',tab==='novel');document.getElementById('knowledgeView').classList.toggle('active',tab==='knowledge');document.getElementById('tabComic').classList.toggle('active',tab==='comic');document.getElementById('tabNovel').classList.toggle('active',tab==='novel');document.getElementById('tabKnowledge').classList.toggle('active',tab==='knowledge');if(tab==='novel')renderNovel();if(tab==='knowledge')renderKnowledge();}
 document.getElementById('tabComic').onclick=()=>setTab('comic');
+document.getElementById('tabNovel').onclick=()=>setTab('novel');
 document.getElementById('tabKnowledge').onclick=()=>setTab('knowledge');
 
 function renderChapters(){chapterList.innerHTML='';DATA.chapters.forEach((ch,i)=>{const btn=document.createElement('button');btn.className=i===currentChapter?'active':'';btn.innerHTML=`<span>${ch.id}<br><small>${ch.title}</small></span><small>${ch.pages.length}頁</small>`;btn.onclick=()=>{currentChapter=i;currentPage=0;renderReader();};chapterList.appendChild(btn);});}
